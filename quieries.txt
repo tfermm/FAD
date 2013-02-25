@@ -1,0 +1,65 @@
+./web/tdc.php:		$type = TDC::db('t2')->GetAll("SELECT * FROM Form_Type");
+./web/tdc.php:		$users = TDC::db('t2')->GetAll("SELECT * FROM User");
+./web/tdc.php:		$type = TDC::db('t2')->GetAll("Select * FROM News");
+./web/tdc.php:	$type = TDC::db('t2')->GetAll("Select * FROM practice");
+./index.php:	$creds = TDC::db('t2')->GetAll("SELECT Id, User_Name, Password, Lawyer_Id, User_level FROM User WHERE Id=?", array($_POST['Id']));
+./index.php:		$creds = TDC::db('t2')->GetAll("SELECT Id, User_Name, Password, Lawyer_Id, User_level FROM User WHERE User_Name=?", array($_POST['Id']));
+./index.php:	if (!TDC::db('t2')->GetOne("SELECT Id FROM Calendar WHERE User_Id=?", array($User_Id))){
+./index.php:		TDC::db('t2')->Execute("INSERT INTO Calendar (User_Id) VALUES (?)", array($User_Id));	
+./index.php:	if (!TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE User_Id=? AND Type=?", array($uid, $form_id))){
+./index.php:		TDC::db('t2')->Execute("INSERT INTO Forms (User_Id, Type) VALUES (?,?)", array($uid, $form_id));
+./index.php:				if (TDC::db('t2')->GetOne("SELECT Id FROM User_Form WHERE Location_Id=? AND User_Id=?", array($key, $uid))){
+./index.php:						TDC::db('t2')->Execute("UPDATE User_Form SET Description=? WHERE Location_Id=? AND User_Id=?", array($value, $key, $uid));
+./index.php:						TDC::dbug(TDC::db('t2')->Execute("INSERT INTO User_Form (User_Id, Form_Id, Location_Id, Description) VALUES(?,?,?,?)", array($uid, $form_id, $key, $value)));
+./includes/tdc_object.php:					$this->form_name = TDC::db('t2')->GetOne("SELECT Description FROM Form_Type WHERE Id=?", array($this->Type));
+./includes/calendar.php:		if (TDC::db('t2')->GetOne("SELECT Id FROM Calendar where Id=?", array ($id1))){
+./includes/calendar.php:			$cal = TDC::db('t2')->GetOne("SELECT User_Id FROM Calendar where Id=?", array ($id1));
+./includes/calendar.php:		if (TDC::db('t2')->GetOne("SELECT Id FROM Calendar where Id=?", array ($Id))){
+./includes/calendar.php:			TDC::db('t2')->Execute("UPDATE Calendar SET Id=?, User_Id=?", array($Id, $User_Id));	
+./includes/calendar.php:			TDC::db('t2')->Execute("INSERT INTO Calendar (Id, User_Id), VALUES (?,?) ON DUPLICATE KEY UPDATE Id=Id+1", array($Id, $User_Id));	
+./includes/calendar.php:			$apps = TDC::db('t2')->GetAll("SELECT * FROM Appointments Where Cal_Id=?", array($this->Id));
+./includes/calendar.php:			$apps = TDC::db('t2')->GetAll("SELECT a.*, c.User_Id FROM Appointments as a, Calendar as c Where (a.Cal_Id = c.Id AND a.Apt_start > ? AND a.Apt_start < ?) ORDER BY a.Apt_start ASC", array($today, $nextday));
+./includes/calendar.php:		if (TDC::db('t2')->GetOne("SELECT Id FROM Calendar WHERE User_Id=?", array($uid))){
+./includes/calendar.php:			$id = TDC::db('t2')->GetOne("SELECT Id FROM Calendar WHERE User_Id=?", array($uid));
+./includes/calendar.php:			TDC::db('t2')->Execute("INSERT INTO Calendar (User_Id) VALUES (?)", array($uid));
+./includes/calendar.php:			$id = TDC::db('t2')->GetOne("SELECT MAX(Id) as Id FROM Calendar");
+./includes/calendar.php:		$apps = TDC::db('t2')->GetAll("SELECT a.*, c.User_Id FROM Appointments as a, Calendar as c Where (a.Cal_Id=? AND c.User_Id=?  AND a.Cal_Id = c.Id AND a.Apt_start > ? AND a.Apt_start < ?) ORDER BY a.Apt_start ASC", array($this->Id, $uid, $today, $nextday));
+./includes/form.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE Id=?", array($id))){
+./includes/form.php:					$data = TDC::Db('t2')->GetAll("SELECT * FROM Forms WHERE User_Id=?", array($this->User_Id));
+./includes/form.php:			$forms = TDC::db('t2')->GetAll($sql, array($this->User_Id));
+./includes/form.php:			$forms = TDC::db('t2')->GetAll("SELECT ft.Id, ft.Description, f.Id as Forms_Id, f.Date_created FROM Form_Type as ft LEFT JOIN Forms as f ON f.Type=ft.Id WHERE f.User_Id=?", array($this->User_Id));
+./includes/appointments.php:		if (TDC::db('t2')->GetOne("SELECT Id FROM Appointments WHERE Id=?", array($id1))){
+./includes/appointments.php:			$app == TDC::db('t2')->GetAll("SELECT * FROM Apointments WHERE Id=?", array($id1));
+./includes/appointments.php:		if(TDC::db('t2')->Execute("DELETE FROM Appointments WHERE Id=?", array($this->Id))){
+./includes/appointments.php:		$current_app = TDC::db('t2')->GetAll("SELECT Id FROM Appointments WHERE (Apt_start >= ?	AND Apt_start <= ?) OR (Apt_end >= ? AND Apt_end <= ?)", array($this->Apt_start, $this->Apt_end, $this->Apt_start, $this->Apt_end));
+./includes/appointments.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Appointments WHERE Id=?", array($this->Id))){
+./includes/appointments.php:				if(TDC::db('t2')->Execute("UPDATE Appointments SET Id=?, Cal_Id=?, Date_created=?, Apt_start=?, Apt_end=?", array($this->Id, $this->Cal_Id, $this->Date_created, $this->Apt_start, $this->Apt_end))){
+./includes/appointments.php:					if(TDC::db('t2')->Execute("INSERT INTO Appointments (Cal_Id, Date_created, Apt_start, Apt_end) VALUES (?,?,?,?)", array($this->Cal_Id, $this->Date_created, $this->Apt_start, $this->Apt_end))){
+./includes/appointments.php:					if(TDC::db('t2')->Execute("INSERT INTO Appointments (Cal_Id, Apt_start, Apt_end) VALUES (?,?,?)", array($this->Cal_Id, $this->Apt_start, $this->Apt_end))){
+./includes/users.php:		$users = TDC::db('t2')->GetAll("SELECT * FROM User");	
+./includes/user.php:		if (TDC::db('t2')->GetAll("SELECT * FROM User WHERE Id=?", array($id1))){
+./includes/user.php:			$user = TDC::db('t2')->GetAll("SELECT * FROM User WHERE Id=?", array($id1));
+./includes/user.php:			if (TDC::db('t2')->GetOne("SELECT Id from User WHERE Id=?", array($this->Id))){
+./includes/user.php:				if(TDC::db('t2')->Execute("UPDATE User SET User_Name=?, Password=?, Lawyer_Id=?, User_level=? WHERE Id=?", array($this->User_Name, $this->Password, $this->Lawyer_Id, $this->User_level, $this->Id))){		
+./includes/user.php:				if(TDC::db('t2')->Execute("INSERT INTO User (User_Name, Password, Lawyer_Id, User_level) VALUES (?,?,?,?)", array($this->User_Name, $this->Password, $this->Lawyer_Id, $this->User_level))){		
+./includes/user.php:		$name = TDC::db('t2')->GetOne("SELECT User_Name FROM User WHERE Id=?", array($this->Lawyer_Id));
+./includes/forms.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE Id=?", array($id))){
+./includes/forms.php:					$data = TDC::Db('t2')->GetAll("SELECT * FROM Form_Fields WHERE Forms_Id=?", array($id));
+./includes/forms.php:			$desc = TDC::db('t2')->GetAll("SELECT * FROM Form_Type");
+./includes/forms.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE Id=?", array($id))){
+./includes/forms.php:					$data = TDC::Db('t2')->GetAll("SELECT * FROM Form_Fields WHERE Forms_Id=?", array($id));
+./includes/forms.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE User_Id=? AND Type=?", array ($this->User->Id, $this->Type))){
+./includes/forms.php:				TDC::db('t2')->Execute("UPDATE Forms SET User_Id=?, Type=? WHERE Id=?", array($this->User_Id, $this->Type, $this->id));
+./includes/forms.php:				TDC::db('t2')->Execute("INSERT INTO Forms (User_Id, Type, Date_created) VALUES (?,?,?)", array($this->User_Id, $this->Type, $this->Date_created));
+./includes/forms.php:				$id = TDC::db('t2')->GetOne("SELECT MAX(Id) as Id FROM Forms");
+./includes/forms.php:			$form_name = TDC::db('t2')->GetOne("SELECT Description FROM Form_Type WHERE Id=?", array($id));
+
+
+$sql = "SELECT * FROM Form_Type t1 
+							WHERE NOT EXISTS 
+							(SELECT Id FROM Forms t2 WHERE t2.Type = t1.Id AND t2.User_Id=?)
+							ORDER BY t1.Id ASC";
+./includes/forms.php:			$forms = TDC::db('t2')->GetAll($sql, array($this->User_Id));
+./includes/forms.php:			$forms = TDC::db('t2')->GetAll("SELECT ft.Id, f.Type, ft.Description FROM Forms f, Form_Type ft WHERE User_Id=? AND f.Type=ft.Id", array($this->User_Id));
+./includes/forms.php:			if (TDC::db('t2')->GetOne("SELECT Id FROM Forms WHERE Id=?", array($id))){
+./includes/forms.php:				$user_data = TDC::db('t2')->GetAll("SELECT Location_Id, Description FROM User_Form WHERE Form_Id=? AND User_Id=?", array($id, $uid));

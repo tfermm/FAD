@@ -1,0 +1,92 @@
+<style>
+.hero-unit {
+margin-top:-2.5em;
+height:auto;
+}
+.span5 {
+margin-top:-19em;
+margin-left:-2em;
+}
+.row-fluid .span7 {
+width: 48.717948717948715%;
+}
+.row {
+margin-top:-3em;
+}
+.row-fluid .span5 {
+width: 48.717948717948715%;
+margin-left: 0em;
+}
+#push, #footer {
+height: 60px;
+margin-top: -4em;
+}
+p{
+font-weight:normal;
+font-size:14px;
+}
+strong{
+font-size:18px;
+margin-bottom:-1.5em;
+}
+hr {
+margin: 5px 0;
+border: 0;
+border-top: 1px solid #EEE;
+border-bottom: 1px solid white;
+}
+
+h3 {
+font-size: 24.5px;
+margin-bottom: -.5em;
+}
+.alert-info {
+color: black;
+background-color: #BABABA;
+border-color: #BCE8F1;
+}
+.hero-unit {
+padding: 30px;
+margin-bottom: 30px;
+font-size: 18px;
+font-weight: 200;
+line-height: 30px;
+color: inherit;
+background-color: #EEE;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+}
+</style>
+<div class="container-fluid">
+      <div class="row-fluid">
+		<div class="span7">
+          <div class="hero-unit">
+            <h3 class="text-info">Welcome to F.A.D Law</h3>
+						<hr>
+						<strong>Please Enjoy our site!</strong>
+						<P>He likes apples --------------------------------------------------------></p>
+          </div>
+</div>
+				<div class="span6">
+          <div class="hero-unit">
+<div class="thumbnail">
+                  <img src="img/gary.jpg" alt="">
+                  <div class="caption">
+										<h3> HEY THIS IS OUR SITE! </h3>
+										<hr>
+										<p> Sup I am a Panda! </p>
+                  </div>
+                </div>
+                </div>
+                </div>
+<div class="span5">
+          <div class="hero-unit">
+            <h3 class="text-info">Firm News</h3>
+						<hr>
+						<strong>{$news.0.title}</strong>
+						<P>{$news.0.subject}</p>
+          </div>
+          </div>
+</div>
+    </div>
