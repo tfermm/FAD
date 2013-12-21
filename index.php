@@ -41,7 +41,7 @@ respond( '[*:url]', function( $request, $response, $app ) {
 		$response->redirect('/~tlferm/database/project');
 	}	
 	$_SESSION['url'] = $request->param('url');
-	$app->tpl = new TDCSmarty;
+	$app->tpl = new TDCSmarty();
 	$now = date('Y-m-d');
 	$app->tpl->assign('now', $now);
 	$app->tpl->assign('news', TDC::my_news());
